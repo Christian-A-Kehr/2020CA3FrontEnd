@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/securitystarter";
+const URL = "https://cakehr.dk/2020CA3/api/login";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -12,13 +12,16 @@ function apiFacade() {
   const setToken = token => {
     localStorage.setItem("jwtToken", token);
   };
+
   const getToken = () => {
     return localStorage.getItem("jwtToken");
   };
+
   const loggedIn = () => {
     const loggedIn = getToken() != null;
     return loggedIn;
   };
+
   const logout = () => {
     localStorage.removeItem("jwtToken");
   };
@@ -34,10 +37,12 @@ function apiFacade() {
         setToken(res.token);
       });
   };
+
   const fetchData = () => {
     const options = makeOptions("GET", true); //True add's the token
     return fetch(URL + "/api/info/user", options).then(handleHttpErrors);
   };
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -46,6 +51,7 @@ function apiFacade() {
         Accept: "application/json"
       }
     };
+
     if (addToken && loggedIn()) {
       opts.headers["x-access-token"] = getToken();
     }
@@ -54,6 +60,7 @@ function apiFacade() {
     }
     return opts;
   };
+
   return {
     makeOptions,
     setToken,
