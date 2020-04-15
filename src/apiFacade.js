@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/securitystarter";
+const URL = "https://cakehr.dk/2020CA3/api/login";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
