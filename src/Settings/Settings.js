@@ -13,5 +13,6 @@ Following URLs are modular and can be changed according to the requirements of t
 */
 const userDataURL = "/api/info/user";
 const loginURL = "/api/login";
+const allJokesURL = "/api/jokes";
 
-export { URL, userDataURL, loginURL };
+export { URL, userDataURL, loginURL, allJokesURL };
