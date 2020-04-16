@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import facade from "./apiFacade";
+import facade from "./ApiFacade";
 
 function LogIn({ login }) {
   const init = { username: "", password: "" };
@@ -27,9 +27,9 @@ function LogIn({ login }) {
     </div>
   );
 }
+
 function LoggedIn() {
   const [dataFromServer, setDataFromServer] = useState("Loading...");
-
   useEffect(() => {
     facade.fetchData().then((data) => setDataFromServer(data.msg));
   }, []);
@@ -42,7 +42,7 @@ function LoggedIn() {
   );
 }
 
-function App() {
+function Login() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const logout = () => {
@@ -71,4 +71,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Login;

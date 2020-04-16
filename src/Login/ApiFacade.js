@@ -1,7 +1,4 @@
-// URL for your deployd version (fetch data will add /api/info/user)
-const URL = "https://cakehr.dk/2020CA3";
-// URL for your Lokcal version
-//const URL = "http://localhost:8080/2020CA3";
+import URL from "../Settings/Settings"
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -10,12 +7,19 @@ function handleHttpErrors(res) {
   return res.json();
 }
 
-function apiFacade() {
+function handleHttpErrors(res) {
+  if (!res.ok) {
+    return Promise.reject({ status: res.status, fullError: res.json() });
+  }
+  return res.json();
+}
+
+function ApiFacade() {
   /* Insert utility-methods from a latter step (d) here (REMEMBER to uncomment in the returned object when you do)*/
   const setToken = (token) => {
     localStorage.setItem("jwtToken", token);
   };
-  // places token in local storage (use dev tool crome ctrl + shift + i to confrirm)
+  // places token in local storage (use dev tool Chrome ctrl + shift + i to confirm)
   const getToken = () => {
     return localStorage.getItem("jwtToken");
   };
@@ -43,7 +47,7 @@ function apiFacade() {
   };
 
   const fetchData = () => {
-    const options = makeOptions("GET", true); //True add's the token
+    const options = makeOptions("GET", true); // true adds the token
     return fetch(URL + "/api/info/user", options).then(handleHttpErrors);
   };
 
@@ -75,5 +79,6 @@ function apiFacade() {
     fetchData,
   };
 }
-const facade = apiFacade();
+
+const facade = ApiFacade();
 export default facade;
