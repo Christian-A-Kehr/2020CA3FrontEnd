@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Login from "./Login/Login";
+import Navbar from "./Navbar/Navbar";
 
 const info = [
   {id: "rendering", title:"Rendering with React",info:"Add some text here"},
