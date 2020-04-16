@@ -1,4 +1,7 @@
-const URL = "https://cakehr.dk/2020CA3/api/login";
+// URL for your deployd version (fetch data will add /api/info/user)
+const URL = "https://cakehr.dk/2020CA3";
+// URL for your Lokcal version
+//const URL = "http://localhost:8080/2020CA3";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -9,10 +12,10 @@ function handleHttpErrors(res) {
 
 function apiFacade() {
   /* Insert utility-methods from a latter step (d) here (REMEMBER to uncomment in the returned object when you do)*/
-  const setToken = token => {
+  const setToken = (token) => {
     localStorage.setItem("jwtToken", token);
   };
-
+  // places token in local storage (use dev tool crome ctrl + shift + i to confrirm)
   const getToken = () => {
     return localStorage.getItem("jwtToken");
   };
@@ -22,6 +25,7 @@ function apiFacade() {
     return loggedIn;
   };
 
+  // removes token when logout button is clicked
   const logout = () => {
     localStorage.removeItem("jwtToken");
   };
@@ -29,11 +33,11 @@ function apiFacade() {
   const login = (user, password) => {
     const options = makeOptions("POST", true, {
       username: user,
-      password: password
+      password: password,
     });
     return fetch(URL + "/api/login", options)
       .then(handleHttpErrors)
-      .then(res => {
+      .then((res) => {
         setToken(res.token);
       });
   };
@@ -48,8 +52,8 @@ function apiFacade() {
       method: method,
       headers: {
         "Content-type": "application/json",
-        Accept: "application/json"
-      }
+        Accept: "application/json",
+      },
     };
 
     if (addToken && loggedIn()) {
@@ -68,7 +72,7 @@ function apiFacade() {
     loggedIn,
     login,
     logout,
-    fetchData
+    fetchData,
   };
 }
 const facade = apiFacade();
