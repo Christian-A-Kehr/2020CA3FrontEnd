@@ -39,7 +39,7 @@ function ApiFacade() {
   };
 
   const fetchData = () => {
-    const options = makeOptions("GET", true); // true adds the token
+    const options = makeOptions("GET", true); // true adds the token as a requirement for the fetch call
     return fetch(URL + userDataURL, options).then(handleHttpErrors);
   };
 
@@ -74,3 +74,4 @@ function ApiFacade() {
 
 const facade = ApiFacade();
 export default facade;
+export { handleHttpErrors };

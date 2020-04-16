@@ -7,3 +7,5 @@ function GETJokes() {
     const options = facade.makeOptions("GET", true);
     return fetch(URL + allJokesURL, options).then(handleHttpErrors);
 };
+
+export { GETJokes };
