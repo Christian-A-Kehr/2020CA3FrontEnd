@@ -1,7 +1,7 @@
 import React from "react";
-import { GETJokes } from "./../../REST/Jokes"
+import { GETJokes } from "../../REST/Jokes"
 
-export default function JokesHeader() {
+export default function JokesComp() {
     return (
         <div>
             <h2>Jokes</h2>

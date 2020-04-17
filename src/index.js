@@ -4,11 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import Navbar from "./Navbar/Navbar";
 
-// const info = [
-//   {id: "rendering", title:"Rendering with React", info:"Add some text here"},
-//   {id: "cool", title:"cool link", info:"dummy text"}
-// ]
-
 const AppWithRouter = () => {
   return (
     <Router>
@@ -17,6 +12,11 @@ const AppWithRouter = () => {
   );
 };
 ReactDOM.render(<AppWithRouter />, document.getElementById("root"));
+
+// const info = [
+//   {id: "rendering", title:"Rendering with React", info:"Add some text here"},
+//   {id: "cool", title:"cool link", info:"dummy text"}
+// ]
 
 // ReactDOM.render(
 //   <React.StrictMode>
