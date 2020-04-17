@@ -10,9 +10,10 @@ const URL = "https://cakehr.dk/2020CA3";
 
 /*
 Following URLs are modular and can be changed according to the requirements of the project.
+EP = endpoint
 */
-const userDataURL = "/api/info/user";
-const loginURL = "/api/login";
-const allJokesURL = "/api/jokes";
+const userDataEP = "/api/info/user";
+const loginEP = "/api/login";
+const allJokesEP = "/api/jokes";
 
-export { URL, userDataURL, loginURL, allJokesURL };
+export { URL, userDataEP, loginEP, allJokesEP };

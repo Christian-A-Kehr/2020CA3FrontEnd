@@ -28,7 +28,7 @@ function LogIn({ login }) {
   );
 }
 
-function LoggedIn() {
+function LoggedIn({ logout }) {
   const [dataFromServer, setDataFromServer] = useState("Loading...");
   useEffect(() => {
     facade.fetchData().then((data) => setDataFromServer(data.msg));
@@ -38,12 +38,12 @@ function LoggedIn() {
     <div>
       <h2>Data Received from server</h2>
       <h3>{dataFromServer}</h3>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }
 
-function Login({ isLoggedIn, loginMsg, setLoginStatus }) {
-  // const [loggedIn, setLoggedIn] = useState(false);
+function Login({ loginMsg, isLoggedIn, setLoginStatus }) {
 
   const logout = () => {
     facade.logout();
@@ -60,14 +60,10 @@ function Login({ isLoggedIn, loginMsg, setLoginStatus }) {
 
   return (
     <div>
-      {!IsLoggedIn ? (
+      {!isLoggedIn ? (
         <LogIn login={login} loginMsg={loginMsg} />
       ) : (
-        <LoggedIn logout={logout} loginMsg={loginMsg} />
-          // <div>
-          //   <LoggedIn />
-          //   <button onClick={logout}>Logout</button>
-          // </div>
+          <LoggedIn logout={logout} loginMsg={loginMsg} />
         )}
     </div>
   );

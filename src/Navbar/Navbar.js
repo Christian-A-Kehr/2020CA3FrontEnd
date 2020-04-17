@@ -39,7 +39,9 @@ export default function Navbar() {
                     <ProductsComp />
                 </Route>
                 <Route path="/jokes">
-                    <JokesComp />
+                    <JokesComp 
+                        
+                    />
                 </Route>
                 <Route path="/login-out">
                     <Login
@@ -64,7 +66,7 @@ function Header({ isLoggedIn, loginMsg }) {
             {isLoggedIn && (
                 <React.Fragment>
                     <li>
-                        <li><NavLink activeClassName="active" to="/jokes">Jokes</NavLink></li>
+                        <NavLink activeClassName="active" to="/jokes">Jokes</NavLink>
                     </li>
                 </React.Fragment>
             )}

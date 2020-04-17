@@ -1,4 +1,4 @@
-import { URL, userDataURL, loginURL } from "./Settings/Settings"
+import { URL, userDataEP, loginEP } from "./Settings/Settings"
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -31,7 +31,7 @@ function ApiFacade() {
       username: user,
       password: password,
     });
-    return fetch(URL + loginURL, options)
+    return fetch(URL + loginEP, options)
       .then(handleHttpErrors)
       .then((res) => {
         setToken(res.token);
@@ -40,7 +40,7 @@ function ApiFacade() {
 
   const fetchData = () => {
     const options = makeOptions("GET", true); // true adds the token as a requirement for the fetch call
-    return fetch(URL + userDataURL, options).then(handleHttpErrors);
+    return fetch(URL + userDataEP, options).then(handleHttpErrors);
   };
 
   const makeOptions = (method, addToken, body) => {
