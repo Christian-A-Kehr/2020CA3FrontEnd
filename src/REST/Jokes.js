@@ -19,8 +19,16 @@ function Jokes(props) {
 
     return (
         <div>
-            <h2>Chuck Norris joke: </h2>
+            <h2>First joke: </h2>
             <p>{jokes.firstApi}</p>
+            <h2>Second joke: </h2>
+            <p>{jokes.secondApi}</p>
+            <h2>Third joke: </h2>
+            <p>{jokes.thirdApi}</p>
+            <h2>Fourth joke: </h2>
+            <p>{jokes.fourthApi}</p>
+            <h2>Fifth joke: </h2>
+            <p>{jokes.fifthApi}</p>
         </div>
     )
 }
