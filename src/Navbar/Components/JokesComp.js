@@ -1,5 +1,5 @@
 import React from "react";
-import jokes from "../../REST/Jokes"
+import Jokes from "../../REST/Jokes"
 import {
     URL,
     allJokesEP
@@ -9,7 +9,7 @@ export default function JokesComp() {
     return (
         <div>
             <h2>Jokes</h2>
-            {jokes.getJokes(URL, allJokesEP)}
+            <Jokes url = {URL} allJokesEP = {allJokesEP} />
         </div>
     );
 }

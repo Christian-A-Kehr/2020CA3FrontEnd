@@ -1,23 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import facade from "../ApiFacade";
 import { handleHttpErrors } from "../ApiFacade";
 
-function Jokes() {
+function Jokes(props) {
+    const URL = props.url;
+    const endpoint = props.allJokesEP;
+    const [jokes, setJokes] = useState({});
 
-
-    const getJokes = (URL, endpoint) => {
+    useEffect(() => {
         const options = facade.makeOptions("GET", true);
-        return fetch(URL + endpoint, options)
+        fetch(URL + endpoint, options)
             .then(handleHttpErrors)
             .then((data) => {
                 console.log(data);
-                <div>
-                    <h2>First joke: </h2>
-                    <p>{data.firstApi}</p>
-                </div>
+                setJokes(data);
             });
-    };
+    },[])
+
+    return (
+        <div>
+            <h2>Chuck Norris joke: </h2>
+            <p>{jokes.firstApi}</p>
+        </div>
+    )
 }
 
-const jokes = Jokes();
-export default jokes;
+export default Jokes;
