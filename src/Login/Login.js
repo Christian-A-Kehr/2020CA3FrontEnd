@@ -42,17 +42,17 @@ function LoggedIn() {
   );
 }
 
-function Login() {
-  const [loggedIn, setLoggedIn] = useState(false);
+function Login({ isLoggedIn, loginMsg, setLoginStatus }) {
+  // const [loggedIn, setLoggedIn] = useState(false);
 
   const logout = () => {
     facade.logout();
-    setLoggedIn(false);
+    setLoginStatus(false);
   };
   const login = (user, pass) => {
     facade
       .login(user, pass)
-      .then((res) => setLoggedIn(true))
+      .then((res) => setLoginStatus(true))
       .catch((res) =>
         alert("Status code : " + res.status + " wrong username or password")
       );
@@ -60,14 +60,15 @@ function Login() {
 
   return (
     <div>
-      {!loggedIn ? (
-        <LogIn login={login} />
+      {!IsLoggedIn ? (
+        <LogIn login={login} loginMsg={loginMsg} />
       ) : (
-        <div>
-          <LoggedIn />
-          <button onClick={logout}>Logout</button>
-        </div>
-      )}
+        <LoggedIn logout={logout} loginMsg={loginMsg} />
+          // <div>
+          //   <LoggedIn />
+          //   <button onClick={logout}>Logout</button>
+          // </div>
+        )}
     </div>
   );
 }
