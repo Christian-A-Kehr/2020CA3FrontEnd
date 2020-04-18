@@ -10,9 +10,7 @@ function GETAllJokes({ endpoint, isLoggedIn }) {
     // }, []);
 
     const doFetch = () => {
-        if (isLoggedIn) {
             facade.getCall(URL, endpoint).then((data) => setResponseData(data));
-        }
     }
 
     return (
