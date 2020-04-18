@@ -25,9 +25,9 @@ export default function Home() {
           <br />
                     <br />
           7. Surge deployment is done as follows:<br />
-            1- In the root of the frontend open a terminal and do 'npm run build'
-            2- In the same terminal do 'surge --project ./build --domain A_DOMAIN_NAME.surge.sh'
-
+            1- In the root of the frontend open a terminal and do 'npm run build'<br />
+            2- In the same terminal do 'surge --project ./build --domain A_DOMAIN_NAME.surge.sh'<br />
+            <br />
             If you have not installed Surge or made an account previously, more info can be found here:
             https://docs.google.com/document/d/1TPkVw4HLB1yeKXOrQQKvH72JOvBQhgVmxSCe8087NoE/edit
         </p>
