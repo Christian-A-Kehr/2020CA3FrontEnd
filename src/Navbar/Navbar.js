@@ -11,7 +11,7 @@ import {
     useHistory
 } from "react-router-dom";
 import "./navStyle.css";
-import facade from "../ApiFacade"
+import facade from "../Login/ApiFacade"
 
 import JokesComp from "./Components/JokesComp";
 import HomeComp from "./Components/HomeComp";

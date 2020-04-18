@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import facade from "../ApiFacade";
-import { handleHttpErrors } from "../ApiFacade";
+import facade from "../Login/ApiFacade";
 
 function Jokes(props) {
   const URL = props.url;
   const endpoint = props.allJokesEP;
-  const [jokes, setJokes] = useState({});
   const isLoggedIn = props.isLoggedIn;
+  const [jokes, setJokes] = useState({});
+
   useEffect(() => {
     const options = facade.makeOptions("GET", true);
     if (isLoggedIn) {
       fetch(URL + endpoint, options)
-        .then(handleHttpErrors)
+        .then(facade.handleHttpErrors)
         .then((data) => {
           console.log(data);
           setJokes(data);

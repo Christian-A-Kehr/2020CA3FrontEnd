@@ -1,13 +1,14 @@
-import { URL, userDataEP, loginEP } from "./Settings/Settings"
-
-function handleHttpErrors(res) {
-  if (!res.ok) {
-    return Promise.reject({ status: res.status, fullError: res.json() });
-  }
-  return res.json();
-}
+import { URL, userDataEP, loginEP } from "../Settings/Settings"
 
 function ApiFacade() {
+
+  const handleHttpErrors = (res) => {
+    if (!res.ok) {
+      return Promise.reject({ status: res.status, fullError: res.json() });
+    }
+    return res.json();
+  }
+
   const setToken = (token) => {
     localStorage.setItem("jwtToken", token);
   };
@@ -39,7 +40,7 @@ function ApiFacade() {
   };
 
   const fetchData = () => {
-    const options = makeOptions("GET", true); // true adds the token as a requirement for the fetch call
+    const options = makeOptions("GET", true); // true means a JWT token is added to the call
     return fetch(URL + userDataEP, options).then(handleHttpErrors);
   };
 
@@ -62,6 +63,7 @@ function ApiFacade() {
   };
 
   return {
+    handleHttpErrors,
     makeOptions,
     setToken,
     getToken,
@@ -74,4 +76,4 @@ function ApiFacade() {
 
 const facade = ApiFacade();
 export default facade;
-export { handleHttpErrors };
+// export { handleHttpErrors };

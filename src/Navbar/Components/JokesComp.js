@@ -1,18 +1,23 @@
 import React from "react";
 import Jokes from "../../REST/Jokes";
+import { GETAllJokes } from "../../REST/JokesREST"
 import {
-    URL,
     allJokesEP
 } from "../../Settings/Settings";
 
 export default function JokesComp({ isLoggedIn }) {
     return (
         <div>
-            
-            <Jokes
+            {/* <Jokes
                 isLoggedIn={isLoggedIn}
                 url={URL}
-                allJokesEP={allJokesEP} />
+                allJokesEP={allJokesEP}
+                /> */}
+            
+            <GETAllJokes
+                endpoint={allJokesEP}
+                isLoggedIn={isLoggedIn}
+            />
         </div>
     );
 }
