@@ -11,13 +11,15 @@ import {
     useHistory
 } from "react-router-dom";
 import "./navStyle.css";
+import facade from "../ApiFacade"
 
 import JokesComp from "./Components/JokesComp";
 import HomeComp from "./Components/HomeComp";
 import Login from "../Login/Login";
 
 export default function Navbar() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    //checks if there is a JWT token in local storage and returns true if token is found 
+    const [isLoggedIn, setIsLoggedIn] = useState(facade.loggedIn());
     let history = useHistory();
 
     const setLoginStatus = status => {
@@ -36,7 +38,7 @@ export default function Navbar() {
                 </Route>
                 <Route path="/jokes">
                     <JokesComp 
-
+                        isLoggedIn={isLoggedIn}
                     />
                 </Route>
                 <Route path="/login-out">

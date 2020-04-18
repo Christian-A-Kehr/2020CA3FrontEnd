@@ -17,14 +17,14 @@ function LogIn({ login }) {
   };
 
   return (
-    <div>
+    <p class="login">
       <h2>Login</h2>
       <form onChange={onChange}>
         <input placeholder="User Name" id="username" />
         <input placeholder="Password" id="password" />
         <button onClick={performLogin}>Login</button>
       </form>
-    </div>
+    </p>
   );
 }
 
@@ -35,16 +35,14 @@ function LoggedIn({ logout }) {
   }, []);
 
   return (
-    <div>
-      <h2>Data Received from server</h2>
-      <h3>{dataFromServer}</h3>
+    <div class="fetched">
+      <p>{dataFromServer}</p>
       <button onClick={logout}>Logout</button>
     </div>
   );
 }
 
 function Login({ loginMsg, isLoggedIn, setLoginStatus }) {
-
   const logout = () => {
     facade.logout();
     setLoginStatus(false);
@@ -63,8 +61,8 @@ function Login({ loginMsg, isLoggedIn, setLoginStatus }) {
       {!isLoggedIn ? (
         <LogIn login={login} loginMsg={loginMsg} />
       ) : (
-          <LoggedIn logout={logout} loginMsg={loginMsg} />
-        )}
+        <LoggedIn logout={logout} loginMsg={loginMsg} />
+      )}
     </div>
   );
 }
