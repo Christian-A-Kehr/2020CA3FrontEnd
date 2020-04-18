@@ -36,10 +36,11 @@ function GETAllJokes({ endpoint, isLoggedIn }) {
 // this function is merely proof-of-concept and has not been tested
 function POSTJoke({ endpoint, isLoggedIn, joke }) {
     const [responseData, setResponseData] = useState("Not logged in");
-    if (isLoggedIn) {
+    const doFetch = () => {
         facade.postCall(URL, endpoint, joke).then((data) => setResponseData(data));
-        // missing return data
     }
+    
+    // missing return data
 }
 
 export { GETAllJokes, POSTJoke }
