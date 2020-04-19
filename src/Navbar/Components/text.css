@@ -1,10 +1,10 @@
-p.instructions {
+div.instructions {
   text-align: center;
   line-height: 1.5;
   font-family: "Times New Roman", Times, serif;
 }
 
-p.introText {
+div.introText {
   background-color: #eee;
   font-size: 15px;
   text-align: left;
@@ -14,7 +14,7 @@ p.introText {
   height: auto;
   overflow: auto;
 }
-p.personaltext {
+div.personaltext {
   background-color: #eee;
   font-size: 10px;
   text-align: left;

@@ -4,13 +4,19 @@ import { URL } from "../Settings/Settings"
 
 function GETAllJokes({ endpoint, isLoggedIn }) {
     const [responseData, setResponseData] = useState("Not logged in");
+    
+    /*
+    alternative solution.
+    disadvantage: calls it every time switching tab in Navbar.
+    advantage: runs automatically and renders newest data.
+    */
 
     // useEffect(() => {
-
+    //     facade.getCall(URL, endpoint).then((data) => setResponseData(data));
     // }, []);
 
     const doFetch = () => {
-            facade.getCall(URL, endpoint).then((data) => setResponseData(data));
+        facade.getCall(URL, endpoint).then((data) => setResponseData(data));
     }
 
     return (
@@ -39,8 +45,11 @@ function POSTJoke({ endpoint, isLoggedIn, joke }) {
     const doFetch = () => {
         facade.postCall(URL, endpoint, joke).then((data) => setResponseData(data));
     }
-    
+
     // missing return data
 }
 
+/*
+remember to add all new components to the export for use in the governing JokesComp.
+*/
 export { GETAllJokes, POSTJoke }

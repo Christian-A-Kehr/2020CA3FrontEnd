@@ -18,7 +18,7 @@ import HomeComp from "./Components/HomeComp";
 import Login from "../Login/Login";
 
 export default function Navbar() {
-    //checks if there is a JWT token in local storage and returns true if token is found 
+    // checks if there is a JWT token in local storage and returns true if token is found 
     const [isLoggedIn, setIsLoggedIn] = useState(facade.loggedIn());
     let history = useHistory();
 

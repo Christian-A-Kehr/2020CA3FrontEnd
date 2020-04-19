@@ -14,6 +14,7 @@ export default function JokesComp({ isLoggedIn }) {
                 allJokesEP={allJokesEP}
                 /> */}
             
+            {/* endpoint must be named as such (endpoint) in order to import the prop in the relevant component. */}
             <GETAllJokes
                 endpoint={allJokesEP}
                 isLoggedIn={isLoggedIn}
