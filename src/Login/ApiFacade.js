@@ -61,6 +61,11 @@ function ApiFacade() {
     }
     return opts;
   };
+  // overvej at bruge post i RestFacade
+  const createUserApi = (url) => {
+    const options = makeOptions("POST", true);
+    return fetch(url, options).then(handleHttpErrors);
+  };
 
   return {
     handleHttpErrors,
@@ -71,6 +76,7 @@ function ApiFacade() {
     login,
     logout,
     fetchData,
+    createUserApi
   };
 }
 
