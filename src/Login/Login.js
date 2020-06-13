@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import facade from "./ApiFacade";
+import Regisration from "./Registration";
 
 function LogIn({ login }) {
   const init = { username: "", password: "" };
@@ -21,7 +22,7 @@ function LogIn({ login }) {
       <h2>Login</h2>
       <form onChange={onChange}>
         <input placeholder="User Name" id="username" />
-        <input placeholder="Password" id="password" />
+        <input type="password" placeholder="Password" id="password" />
         <button onClick={performLogin}>Login</button>
       </form>
     </p>
@@ -61,8 +62,10 @@ function Login({ loginMsg, isLoggedIn, setLoginStatus }) {
       {!isLoggedIn ? (
         <LogIn login={login} loginMsg={loginMsg} />
       ) : (
-        <LoggedIn logout={logout} loginMsg={loginMsg} />
-      )}
+          <LoggedIn logout={logout} loginMsg={loginMsg} />
+        )}
+
+      <Regisration />
     </div>
   );
 }

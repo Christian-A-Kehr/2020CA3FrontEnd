@@ -11,10 +11,11 @@ EP = endpoint
 */
 const userDataEP = "/api/info/user";
 const loginEP = "/api/login";
+const RegistrationURL = "api/register/user";
 
 /*
 Add custom endpoints here for REST endpoints. Called in 'Navbar/Components'.
 */
 const allJokesEP = "/api/jokes";
 
-export { URL, userDataEP, loginEP, allJokesEP };
+export { URL, userDataEP, loginEP, allJokesEP, RegistrationURL };
