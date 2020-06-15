@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import RegistrationURL from "../Settings/Settings";
-import ApiFacade from "./ApiFacade";
+import { URL, registrationURL } from "../Settings/Settings";
+import facade from "../REST/RESTFacade";
 
 export default function Registration() {
     let blankUser = { username: "", password: "" };
     const [user, setUser] = useState({ ...blankUser });
-    const [response, setResponse] = useState("");
+    const [responseData, setResponseData] = useState("");
 
     let token = localStorage.getItem("jwtToken");
     const [loggedIn, setLoggedIn] = useState(
@@ -17,18 +17,15 @@ export default function Registration() {
         setUser({ ...user, [id]: value });
     }
 
-    // function submitHandler(event) {
-    //     const url = RegistrationURL + "/" + user.username + "/" + user.password;
-    //     apiFetchFacade()
-    //         .createUserApi(url)
-    //         .then((data) => {
-    //             //setResponse("ok");
-    //             loginCallback(user.username, user.password);
-    //         })
-    //         .catch((err) => {
-    //             setResponse(err.status);
-    //         });
-    // }
+    function submitHandler(event) {
+        const body = { username: user.username, password: user.password };
+        // const jsonBody = JSON.stringify(body);
+        facade.postCall(URL, registrationURL, body).then((data) => setResponseData(data)
+            .catch((err) => {
+                setResponseData(err.status);
+            })
+        );
+    }
 
     return (
         <>
@@ -54,13 +51,13 @@ export default function Registration() {
                         onChange={(event) => changeHandler(event)}
                     />
                 </p>
-                {/* <button onClick={(event) => submitHandler(event)}>Sign Up</button> */}
-                {response === 400 && (
+                <button onClick={(event) => submitHandler(event)}>Sign Up</button>
+                {responseData === 400 && (
                     <>
                         <p>Username already exists</p>
                     </>
                 )}
-                {response === 500 && (
+                {responseData === 500 && (
                     <>
                         <p>Something went wrong, please try again later</p>
                     </>
