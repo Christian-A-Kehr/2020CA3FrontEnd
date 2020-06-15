@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import facade from "./RESTFacade"
 import { URL } from "../Settings/Settings"
 
-function GETAllJokes({ endpoint, isLoggedIn }) {
+function GETJokes({ endpoint, isLoggedIn }) {
     const [responseData, setResponseData] = useState("Not logged in");
-    
+
     /*
     alternative solution.
     disadvantage: calls it every time switching tab in Navbar.
@@ -19,20 +19,22 @@ function GETAllJokes({ endpoint, isLoggedIn }) {
         facade.getCall(URL, endpoint).then((data) => setResponseData(data));
     }
 
+    const chuckJokes = responseData.chuckNorrisJokes
+
     return (
         (isLoggedIn ? (
-            <div class="fetched">
+            <div className="fetched">
                 <button onClick={doFetch}>Get me some new Jokes</button>
                 <h2>First joke: </h2>
-                <p>{responseData.firstApi}</p>
+
+                {/* {console.log(responseData.chuckNorrisJokes)}
+                <p> {chuckJokes} </p>
+                {chuckJokes.forEach(item => {
+                    console.log(item)
+                })} */}
+                {/* {chuckJokes.forEach(element => <p> {element.value} </p>)} */}
                 <h2>Second joke: </h2>
-                <p>{responseData.secondApi}</p>
-                <h2>Third joke: </h2>
-                <p>{responseData.thirdApi}</p>
-                <h2>Fourth joke: </h2>
-                <p>{responseData.fourthApi}</p>
-                <h2>Fifth joke (DadJoke): </h2>
-                <p>{responseData.fifthApi}</p>
+                {/* <p>{responseData.dadJokes.joke}</p> */}
             </div>) : (
                 <div class="fetched">
                     <p>Please log in</p>
@@ -52,4 +54,4 @@ function POSTJoke({ endpoint, isLoggedIn, joke }) {
 /*
 remember to add all new components to the export for use in the governing JokesComp.
 */
-export { GETAllJokes, POSTJoke }
+export { GETJokes, POSTJoke }
